@@ -5,6 +5,7 @@ with open('stock.csv', mode='r') as infile:
     table = 'stock'
     with open('stock.sql', mode='w') as outfile:
         outfile.write('''
+    drop table stock;
     create table stock(
         confirm_no int,
         order_no varchar(100),
@@ -24,5 +25,8 @@ with open('stock.csv', mode='r') as infile:
         next(rows)
 
         for row in rows:
+            if row[3] == 'B':
+                # Negative the buy price.
+                row[8] = (-1) * float(row[8])
             query = 'insert into ' + table + ' values ('+ ','.join('"{0}"'.format(w) for w in row[0:-1])+');\n'
             outfile.write(query)
