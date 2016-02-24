@@ -26,10 +26,3 @@ with open('stock.csv', mode='r') as infile:
         for row in rows:
             query = 'insert into ' + table + ' values ('+ ','.join('"{0}"'.format(w) for w in row[0:-1])+');\n'
             outfile.write(query)
-        # mydict = {rows[0]:rows[1] for rows in reader}
-    # print row for row in reader
-    # d = {}
-    # for row in reader:
-    #    # k, v = row
-    #    # d[k] = v
-    #    print row
