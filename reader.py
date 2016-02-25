@@ -25,6 +25,8 @@ with open('stock.csv', mode='r') as infile:
         next(rows)
 
         for row in rows:
+            if len(row) == 0:
+                continue
             if row[3] == 'B':
                 # Negative the buy price.
                 row[8] = (-1) * float(row[8])
