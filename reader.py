@@ -5,7 +5,7 @@ with open('stock.csv', mode='r') as infile:
     table = 'stock'
     with open('stock.sql', mode='w') as outfile:
         outfile.write('''
-    drop table stock;
+    drop table stock if exists;
     create table stock(
         confirm_no int,
         order_no varchar(100),
